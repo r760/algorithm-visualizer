@@ -5,16 +5,7 @@ import javax.swing.*;
 public class sortingAlgorithm extends algorithmVisualizer {
 	private static final long serialVersionUID = 1;
 	protected final int MAX = 50;
-	protected final int ACTION_DELAY = 250;
-	protected final int REPAINT_DELAY = ACTION_DELAY / 2;
-
 	protected int[] array = new int[MAX];
-
-	protected Timer timer = new Timer(REPAINT_DELAY, new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			repaint();
-		}
-	});
 
 	sortingAlgorithm() {
 		super();
@@ -24,12 +15,10 @@ public class sortingAlgorithm extends algorithmVisualizer {
 	private void init() {
 		randomizeArray();
 
-		Font f = new Font("Arial", Font.PLAIN, 15);
-
 		JButton randomizeArrayButton = new JButton("Randomize Array");
 		randomizeArrayButton.setBounds(20, 10, 150, 40);
 		randomizeArrayButton.setFocusPainted(false);
-		randomizeArrayButton.setFont(f);
+		randomizeArrayButton.setFont(regularFont);
 		randomizeArrayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				randomizeArray();
@@ -40,17 +29,18 @@ public class sortingAlgorithm extends algorithmVisualizer {
 		JButton insertionSortButton = new JButton("Insertion Sort");
 		insertionSortButton.setBounds(180, 10, 150, 40);
 		insertionSortButton.setFocusPainted(false);
-		insertionSortButton.setFont(f);
+		insertionSortButton.setFont(regularFont);
 		insertionSortButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				insertionSort();
+				repaint();
 			}
 		});
 
 		frame.add(randomizeArrayButton);
 		frame.add(insertionSortButton);
 		frame.add(this);
-		repaint();
+		reloadFrame();
 	}
 
 	protected void randomizeArray() {
@@ -58,14 +48,16 @@ public class sortingAlgorithm extends algorithmVisualizer {
 			array[i] = new Random().nextInt(600) + 200;
 		}
 	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		int offSet = 0;
 		for (int a : array) {
 			g.fillRect(20 + offSet, 60, 20, a);
-			offSet += 20;
+			offSet += 21;
 		}
 	}
+
 	protected void insertionSort() {
 		timer.start();
 		new Thread() {
@@ -88,6 +80,7 @@ public class sortingAlgorithm extends algorithmVisualizer {
 			}
 		}.start();
 	}
+
 	public static void main(String[] args) {
 		new sortingAlgorithm();
 	}
