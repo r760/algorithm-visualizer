@@ -51,10 +51,11 @@ public class sortingAlgorithm extends algorithmVisualizer {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		int offSet = 0;
+		int width = 20, height, offset = 0;
 		for (int a : array) {
-			g.fillRect(20 + offSet, 60, 20, a);
-			offSet += 21;
+			height = a;
+			g.fillRect(20 + offset, 930 - height, width, height);
+			offset += width + 1;
 		}
 	}
 
@@ -65,15 +66,14 @@ public class sortingAlgorithm extends algorithmVisualizer {
 				for (int i = 1; i < array.length; i++) {
 					int key = array[i];
 					int j = i;
-					while (j > 0 && array[j - 1] > key) {
-						array[j] = array[j - 1];
-						j--;
-						array[j] = key;
+					while (j > 0 && key < array[j - 1]) {
 						try {
 							Thread.sleep(ACTION_DELAY);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+						array[j] = array[j - 1];
+						array[--j] = key;
 					}
 				}
 				timer.stop();
