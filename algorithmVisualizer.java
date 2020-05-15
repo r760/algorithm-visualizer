@@ -32,16 +32,18 @@ public class algorithmVisualizer extends JPanel {
 		JMenu speedMenu = new JMenu("Animation Speed");
 		speedMenu.setFont(largeFont);
 
-		JMenuItem jmi1, jmi2, jmi3, jmi4;
-		jmi1 = new JMenuItem("Slow");
-		jmi2 = new JMenuItem("Medium");
-		jmi3 = new JMenuItem("Fast");
-		jmi4 = new JMenuItem("Fastest");
+		JMenuItem jmi1, jmi2, jmi3, jmi4, jmi5;
+		jmi1 = new JMenuItem("Speed 1");
+		jmi2 = new JMenuItem("Speed 2");
+		jmi3 = new JMenuItem("Speed 3");
+		jmi4 = new JMenuItem("Speed 4");
+		jmi5 = new JMenuItem("Speed 5");
 
 		jmi1.setFont(largeFont);
 		jmi2.setFont(largeFont);
 		jmi3.setFont(largeFont);
 		jmi4.setFont(largeFont);
+		jmi5.setFont(largeFont);
 
 		ActionListener selectSpeed = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -53,6 +55,8 @@ public class algorithmVisualizer extends JPanel {
 					setAnimationSpeed(500);
 				} else if (e.getSource() == jmi4) {
 					setAnimationSpeed(250);
+				} else if (e.getSource() == jmi5) {
+					setAnimationSpeed(125);
 				}
 			}
 		};
@@ -61,11 +65,13 @@ public class algorithmVisualizer extends JPanel {
 		jmi2.addActionListener(selectSpeed);
 		jmi3.addActionListener(selectSpeed);
 		jmi4.addActionListener(selectSpeed);
+		jmi5.addActionListener(selectSpeed);
 
 		speedMenu.add(jmi1);
 		speedMenu.add(jmi2);
 		speedMenu.add(jmi3);
 		speedMenu.add(jmi4);
+		speedMenu.add(jmi5);
 
 		menu.add(speedMenu);
 	}
