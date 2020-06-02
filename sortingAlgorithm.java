@@ -116,11 +116,11 @@ public class sortingAlgorithm extends algorithmVisualizer {
 						Node key = array[i];
 						int j = i;
 
-						key.setC(Color.GREEN);
+						key.setC(Color.RED);
 						Thread.sleep(ACTION_DELAY);
 						key.setC(Color.BLACK);
 						Thread.sleep(ACTION_DELAY);
-						key.setC(Color.GREEN);
+						key.setC(Color.RED);
 
 						// <loop-condition> j > 0 AND array[i] < array[j-1]
 						while (j > 0 && key.compareTo(array[j - 1]) < 0) {
@@ -129,7 +129,8 @@ public class sortingAlgorithm extends algorithmVisualizer {
 							array[--j] = key;
 						}
 
-						key.setC(Color.RED);
+						Thread.sleep(ACTION_DELAY * 2);
+						key.setC(Color.GREEN);
 						Thread.sleep(ACTION_DELAY * 2);
 						key.setC(Color.BLACK);
 					}
@@ -153,31 +154,62 @@ public class sortingAlgorithm extends algorithmVisualizer {
 						int index = i;
 						Node key = array[index];
 
-						key.setC(Color.GREEN);
-						Thread.sleep(ACTION_DELAY);
-						key.setC(Color.BLACK);
-						Thread.sleep(ACTION_DELAY);
-						key.setC(Color.GREEN);
-
 						for (int j = i + 1; j < array.length; j++) {
 							// <if-condition> array[j] < array[index]
 							if (array[j].compareTo(array[index]) < 0)
 								index = j;
 						}
 
+						key.setC(Color.RED);
+						Thread.sleep(ACTION_DELAY);
+						key.setC(Color.BLACK);
+						Thread.sleep(ACTION_DELAY);
+						key.setC(Color.RED);
+
 						if (index != i) {
+							array[index].setC(Color.GREEN);
+							Thread.sleep(ACTION_DELAY);
+							array[index].setC(Color.BLACK);
+							Thread.sleep(ACTION_DELAY);
+							array[index].setC(Color.GREEN);
+
+							Thread.sleep(ACTION_DELAY * 2);
+
 							array[i] = array[index];
 							array[index] = key;
-						}
 
-						key.setC(Color.RED);
-						Thread.sleep(ACTION_DELAY * 2);
-						key.setC(Color.BLACK);
+							Thread.sleep(ACTION_DELAY * 2);
+
+							array[index].setC(Color.BLACK);
+							Thread.sleep(ACTION_DELAY);
+							array[index].setC(Color.RED);
+							Thread.sleep(ACTION_DELAY);
+							array[index].setC(Color.BLACK);
+
+							Thread.sleep(ACTION_DELAY * 2);
+
+							array[i].setC(Color.BLACK);
+							Thread.sleep(ACTION_DELAY);
+							array[i].setC(Color.GREEN);
+
+							Thread.sleep(ACTION_DELAY);
+							array[i].setC(Color.BLACK);
+							Thread.sleep(ACTION_DELAY);
+
+							array[i].setC(Color.GREEN);
+							Thread.sleep(ACTION_DELAY);
+							array[i].setC(Color.BLACK);
+
+						} else {
+							Thread.sleep(ACTION_DELAY * 2);
+							key.setC(Color.GREEN);
+							Thread.sleep(ACTION_DELAY * 2);
+							key.setC(Color.BLACK);
+						}
 					}
 
 					Thread.sleep(ACTION_DELAY);
 					timer.stop();
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
