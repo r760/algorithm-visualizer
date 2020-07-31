@@ -1,10 +1,17 @@
 # algorithm-visualizer
-a sorting algorithm visualizer built in Java with Swing
+an algorithm visualizer built in Java with Swing
+
 ## includes
-* insertion sort
-* selection sort
-# install and use 
+* sorting algorithm visualizer for { insertion, selection } sort
+* searching algorithm visualizer for { binary } search
+
+# install and use
 ```
+git clone https://github.com/r760/algorithm-visualizer
 javac sortingAlgorithm.java
-java sortingAlgorithm
+javac binarySearchAlgorithm.java
 ```
+* for the sorting algorithm visualizer run
+  * ```java sortingAlgorithm```
+* for the search algorithm visualizer run
+  * ```java binarySearchAlgorithm```
