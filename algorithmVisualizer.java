@@ -14,7 +14,7 @@ public class algorithmVisualizer extends JPanel {
 	protected JMenu menu = new JMenu("Settings");
 
 	algorithmVisualizer() {
-		setAnimationSpeed(1000);
+		setAnimationSpeed(750);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1090, 1010);

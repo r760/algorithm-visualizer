@@ -45,7 +45,7 @@ public class sortingAlgorithm extends algorithmVisualizer {
 	sortingAlgorithm() {
 		super();
 		init();
-	};
+	}
 
 	private void init() {
 		randomizeArray();
