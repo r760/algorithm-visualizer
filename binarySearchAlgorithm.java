@@ -155,14 +155,14 @@ public class binarySearchAlgorithm extends algorithmVisualizer {
 
 			array[low].setM('l');
 			Thread.sleep(ACTION_DELAY * 2);
-			array[mid].setM('m');
-			Thread.sleep(ACTION_DELAY * 2);
 			array[high].setM('h');
+			Thread.sleep(ACTION_DELAY * 2);
+			array[mid].setM('m');
 			Thread.sleep(ACTION_DELAY * 2);
 
 			array[low].setM(' ');
-			array[mid].setM(' ');
 			array[high].setM(' ');
+			array[mid].setM(' ');
 
 			if (key == array[mid].getX()) {
 				return mid;
