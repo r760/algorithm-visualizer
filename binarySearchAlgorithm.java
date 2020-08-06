@@ -98,19 +98,21 @@ public class binarySearchAlgorithm extends algorithmVisualizer {
 		g.setFont(largerFont);
 		for (Node a : array) {
 			g.setColor(Color.BLACK);
-			g.fillRect(20 + offset, height, width, height);
 
 			if (a.getM() == 'l') {
 				g.setColor(Color.GREEN);
 			} else if (a.getM() == 'm') {
-				g.setColor(Color.YELLOW);
+				g.setColor(Color.ORANGE);
 			} else if (a.getM() == 'h') {
 				g.setColor(Color.RED);
 			} else if (a.getM() == 'c') {
 				g.setColor(Color.CYAN);
 			} else {
-				g.setColor(Color.WHITE);
+				g.setColor(Color.BLACK);
 			}
+
+			g.fillRect(20 + offset, height, width, height);
+			g.setColor(Color.WHITE);
 
 			g.drawString(a.getX() + "", offset + width - 45, height + 50);
 			offset += width + 1;
@@ -126,19 +128,16 @@ public class binarySearchAlgorithm extends algorithmVisualizer {
 					for (Node a : array) a.setM(' ');
 
 					if (x > -1) {
-						array[x].setM('c');
-						repaint();
-						Thread.sleep(ACTION_DELAY * 2);
+						for (int i = 0; i < 5; i++) {
+							array[x].setM('c');
+							repaint();
+							Thread.sleep(ACTION_DELAY * 2);
 
-						array[x].setM(' ');
-						repaint();
-						Thread.sleep(ACTION_DELAY * 2);
+							array[x].setM(' ');
+							repaint();
+							Thread.sleep(ACTION_DELAY * 2);
+						}
 
-						array[x].setM('c');
-						repaint();
-						Thread.sleep(ACTION_DELAY * 2);
-
-						array[x].setM(' ');
 						repaint();
 					}
 
