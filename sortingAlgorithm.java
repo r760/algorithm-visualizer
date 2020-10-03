@@ -2,43 +2,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 import javax.swing.*;
+
 public class sortingAlgorithm extends algorithmVisualizer {
 	private static final long serialVersionUID = 1;
 	protected final int MAX = 50;
-
-	protected static class Node implements Comparable<Node> {
-		private int x;
-		private Color c;
-
-		Node(int x) {
-			setX(x);
-			setC(Color.BLACK);
-		}
-		Node(int x, Color c) {
-			setX(x);
-			setC(c);
-		}
-
-		public int getX() {
-			return x;
-		}
-
-		public Color getC() {
-			return c;
-		}
-
-		public void setX(int x) {
-			this.x = x;
-		}
-
-		public void setC(Color c) {
-			this.c = c;
-		}
-
-		public int compareTo(Node other) {
-			return this.getX() - other.getX();
-		}
-	}
 
 	protected Node[] array = new Node[MAX];
 
@@ -107,6 +74,14 @@ public class sortingAlgorithm extends algorithmVisualizer {
 		}
 	}
 
+	protected void blink(Node key, Color c1, Color c2, int duration) throws InterruptedException {
+		key.setC(c1);
+		Thread.sleep(duration);
+		key.setC(c2);
+		Thread.sleep(duration);
+		key.setC(c1);
+	}
+
 	protected void insertionSort() {
 		timer.start();
 		new Thread() {
@@ -116,11 +91,7 @@ public class sortingAlgorithm extends algorithmVisualizer {
 						Node key = array[i];
 						int j = i;
 
-						key.setC(Color.RED);
-						Thread.sleep(ACTION_DELAY);
-						key.setC(Color.BLACK);
-						Thread.sleep(ACTION_DELAY);
-						key.setC(Color.RED);
+						blink(key, Color.RED, Color.BLACK, ACTION_DELAY);
 
 						// <loop-condition> j > 0 AND array[i] < array[j-1]
 						while (j > 0 && key.compareTo(array[j - 1]) < 0) {
@@ -160,45 +131,26 @@ public class sortingAlgorithm extends algorithmVisualizer {
 								index = j;
 						}
 
-						key.setC(Color.RED);
-						Thread.sleep(ACTION_DELAY);
-						key.setC(Color.BLACK);
-						Thread.sleep(ACTION_DELAY);
-						key.setC(Color.RED);
+						blink(key, Color.RED, Color.BLACK, ACTION_DELAY);
 
 						if (index != i) {
-							array[index].setC(Color.GREEN);
-							Thread.sleep(ACTION_DELAY);
-							array[index].setC(Color.BLACK);
-							Thread.sleep(ACTION_DELAY);
-							array[index].setC(Color.GREEN);
+
+							Thread.sleep(ACTION_DELAY * 2);
+
+							blink(array[index], Color.RED, Color.BLACK, ACTION_DELAY);
 
 							Thread.sleep(ACTION_DELAY * 2);
 
 							array[i] = array[index];
 							array[index] = key;
 
-							Thread.sleep(ACTION_DELAY * 2);
-
-							array[index].setC(Color.BLACK);
-							Thread.sleep(ACTION_DELAY);
-							array[index].setC(Color.RED);
-							Thread.sleep(ACTION_DELAY);
-							array[index].setC(Color.BLACK);
-
-							Thread.sleep(ACTION_DELAY * 2);
-
-							array[i].setC(Color.BLACK);
-							Thread.sleep(ACTION_DELAY);
 							array[i].setC(Color.GREEN);
+							array[index].setC(Color.GREEN);
 
 							Thread.sleep(ACTION_DELAY);
-							array[i].setC(Color.BLACK);
-							Thread.sleep(ACTION_DELAY);
 
-							array[i].setC(Color.GREEN);
-							Thread.sleep(ACTION_DELAY);
 							array[i].setC(Color.BLACK);
+							array[index].setC(Color.BLACK);
 
 						} else {
 							Thread.sleep(ACTION_DELAY * 2);
