@@ -50,9 +50,21 @@ public class sortingAlgorithm extends algorithmVisualizer {
 			}
 		});
 
+		JButton bubbleSortButton = new JButton("Bubble Sort");
+		bubbleSortButton.setBounds(500, 10, 150, 40);
+		bubbleSortButton.setFocusPainted(false);
+		bubbleSortButton.setFont(regularFont);
+		bubbleSortButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bubbleSort();
+				repaint();
+			}
+		});
+
 		frame.add(randomizeArrayButton);
 		frame.add(insertionSortButton);
 		frame.add(selectionSortButton);
+		frame.add(bubbleSortButton);
 		frame.add(this);
 		reloadFrame();
 	}
@@ -74,12 +86,25 @@ public class sortingAlgorithm extends algorithmVisualizer {
 		}
 	}
 
-	protected void blink(Node key, Color c1, Color c2, int duration) throws InterruptedException {
+	protected void blink(Node key, Color c1, Color c2, int duration)
+	    throws InterruptedException {
 		key.setC(c1);
 		Thread.sleep(duration);
 		key.setC(c2);
 		Thread.sleep(duration);
 		key.setC(c1);
+	}
+
+	protected void blink(Node k1, Node k2, Color c1, Color c2, int duration)
+	    throws InterruptedException {
+		k1.setC(c1);
+		k2.setC(c1);
+		Thread.sleep(duration);
+		k1.setC(c2);
+		k2.setC(c2);
+		Thread.sleep(duration);
+		k1.setC(c1);
+		k2.setC(c1);
 	}
 
 	protected void insertionSort() {
@@ -100,9 +125,7 @@ public class sortingAlgorithm extends algorithmVisualizer {
 							array[--j] = key;
 						}
 
-						Thread.sleep(ACTION_DELAY * 2);
-						key.setC(Color.GREEN);
-						Thread.sleep(ACTION_DELAY * 2);
+						blink(key, Color.GREEN, Color.BLACK, ACTION_DELAY);
 						key.setC(Color.BLACK);
 					}
 
@@ -126,7 +149,8 @@ public class sortingAlgorithm extends algorithmVisualizer {
 						Node key = array[index];
 
 						for (int j = i + 1; j < array.length; j++) {
-							// <if-condition> array[j] < array[index]
+							// <if-condition> array[j] <
+							// array[index]
 							if (array[j].compareTo(array[index]) < 0)
 								index = j;
 						}
@@ -134,20 +158,16 @@ public class sortingAlgorithm extends algorithmVisualizer {
 						blink(key, Color.RED, Color.BLACK, ACTION_DELAY);
 
 						if (index != i) {
+							blink(array[index], Color.RED, Color.BLACK,
+							    ACTION_DELAY);
 
-							Thread.sleep(ACTION_DELAY * 2);
-
-							blink(array[index], Color.RED, Color.BLACK, ACTION_DELAY);
-
-							Thread.sleep(ACTION_DELAY * 2);
+							Thread.sleep(ACTION_DELAY);
 
 							array[i] = array[index];
 							array[index] = key;
 
-							array[i].setC(Color.GREEN);
-							array[index].setC(Color.GREEN);
-
-							Thread.sleep(ACTION_DELAY);
+							blink(array[i], array[index], Color.GREEN,
+							    Color.BLACK, ACTION_DELAY);
 
 							array[i].setC(Color.BLACK);
 							array[index].setC(Color.BLACK);
@@ -157,6 +177,42 @@ public class sortingAlgorithm extends algorithmVisualizer {
 							key.setC(Color.GREEN);
 							Thread.sleep(ACTION_DELAY * 2);
 							key.setC(Color.BLACK);
+						}
+					}
+
+					Thread.sleep(ACTION_DELAY);
+					timer.stop();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
+
+	protected void bubbleSort() {
+		timer.start();
+		new Thread() {
+			public void run() {
+				try {
+					for (int i = 0; i < array.length - 1; i++) {
+						for (int j = 0; j < (array.length - 1 - i); j++) {
+							blink(array[j], array[j + 1], Color.RED,
+							    Color.BLACK, ACTION_DELAY);
+
+							blink(array[j], array[j + 1], Color.RED,
+							    Color.BLACK, ACTION_DELAY);
+
+							if (array[j].compareTo(array[j + 1]) > 0) {
+								int temp = array[j].getX();
+								array[j].setX(array[j + 1].getX());
+								array[j + 1].setX(temp);
+							}
+
+							blink(array[j], array[j + 1], Color.GREEN,
+							    Color.BLACK, ACTION_DELAY);
+
+							array[j].setC(Color.BLACK);
+							array[j + 1].setC(Color.BLACK);
 						}
 					}
 
