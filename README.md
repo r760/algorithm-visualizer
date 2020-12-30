@@ -2,7 +2,7 @@
 an algorithm visualizer built in Java with Swing
 
 ## includes
-* sorting algorithm visualizer for { insertion, selection } sort
+* sorting algorithm visualizer for {insertion, selection, bubble} sort
 
 # install and use
 ```
