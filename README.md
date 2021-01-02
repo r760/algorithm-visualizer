@@ -1,4 +1,4 @@
-# algorithm-visualizer
+# sorting-algorithm-visualizer
 an algorithm visualizer built in Java with Swing
 
 ## includes
@@ -6,7 +6,7 @@ an algorithm visualizer built in Java with Swing
 
 # install and use
 ```
-git clone https://github.com/r760/algorithm-visualizer
+git clone https://github.com/r760/sorting-algorithm-visualizer
 javac sortingAlgorithm.java
 java sortingAlgorithm
 ```
