@@ -1,12 +1,12 @@
-# sorting-algorithm-visualizer
+## algorithm-visualizer
 an algorithm visualizer built in Java with Swing
 
-## includes
-* sorting algorithm visualizer for {insertion, selection, bubble} sort
+### features
+- visualize; insertion sort, selection sort, and bubble sort
 
-# install and use
+### How to run ?
 ```
-git clone https://github.com/r760/sorting-algorithm-visualizer
-javac sortingAlgorithm.java
-java sortingAlgorithm
+git clone https://github.com/r760/algorithm-visualizer
+javac sortingAlgorithmVisualizer.java
+java  sortingAlgorithmVisualizer
 ```
