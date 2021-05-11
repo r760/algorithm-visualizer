@@ -18,7 +18,7 @@ public class algorithmVisualizer extends JPanel {
 		setAnimationSpeed(750);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1090, 1010);
+		frame.setSize(1090, 990);
 
 		menuBar.setFont(regularFont);
 		menu.setFont(largeFont);
@@ -49,15 +49,15 @@ public class algorithmVisualizer extends JPanel {
 		ActionListener selectSpeed = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == jmi1) {
-					setAnimationSpeed(1000);
-				} else if (e.getSource() == jmi2) {
 					setAnimationSpeed(750);
-				} else if (e.getSource() == jmi3) {
+				} else if (e.getSource() == jmi2) {
 					setAnimationSpeed(500);
-				} else if (e.getSource() == jmi4) {
+				} else if (e.getSource() == jmi3) {
 					setAnimationSpeed(250);
-				} else if (e.getSource() == jmi5) {
+				} else if (e.getSource() == jmi4) {
 					setAnimationSpeed(125);
+				} else if (e.getSource() == jmi5) {
+					setAnimationSpeed(25);
 				}
 			}
 		};
@@ -88,7 +88,6 @@ public class algorithmVisualizer extends JPanel {
 	}
 
 	protected void reloadFrame() {
-		repaint();
 		frame.setVisible(false);
 		frame.setVisible(true);
 	}

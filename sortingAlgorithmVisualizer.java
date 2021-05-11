@@ -60,7 +60,7 @@ public class sortingAlgorithmVisualizer extends algorithmVisualizer {
 		randomizeArrayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				randomizeArray();
-				repaint();
+				reloadFrame();
 			}
 		});
 
@@ -71,7 +71,6 @@ public class sortingAlgorithmVisualizer extends algorithmVisualizer {
 		insertionSortButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				insertionSort();
-				repaint();
 			}
 		});
 
@@ -82,7 +81,6 @@ public class sortingAlgorithmVisualizer extends algorithmVisualizer {
 		selectionSortButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectionSort();
-				repaint();
 			}
 		});
 
@@ -93,7 +91,6 @@ public class sortingAlgorithmVisualizer extends algorithmVisualizer {
 		bubbleSortButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bubbleSort();
-				repaint();
 			}
 		});
 
@@ -165,6 +162,7 @@ public class sortingAlgorithmVisualizer extends algorithmVisualizer {
 						key.setC(Color.BLACK);
 					}
 
+					reloadFrame();
 					Thread.sleep(ACTION_DELAY);
 					timer.stop();
 
@@ -216,6 +214,8 @@ public class sortingAlgorithmVisualizer extends algorithmVisualizer {
 						}
 					}
 
+
+					reloadFrame();
 					Thread.sleep(ACTION_DELAY);
 					timer.stop();
 				} catch (Exception e) {
@@ -252,6 +252,7 @@ public class sortingAlgorithmVisualizer extends algorithmVisualizer {
 						}
 					}
 
+					reloadFrame();
 					Thread.sleep(ACTION_DELAY);
 					timer.stop();
 				} catch (Exception e) {
