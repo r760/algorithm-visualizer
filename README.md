@@ -8,6 +8,6 @@ an algorithm visualizer built in Java with Swing
 ```
 git clone https://github.com/r760/algorithm-visualizer
 cd algorithm-visualizer
-javac sortingAlgorithmVisualizer.java
-java  sortingAlgorithmVisualizer
+javac algorithmVisualizer.java
+java algorithmVisualizer
 ```
